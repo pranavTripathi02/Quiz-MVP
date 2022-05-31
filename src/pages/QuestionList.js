@@ -16,35 +16,43 @@ export default function QuestionList() {
     else showAlert({ text: 'please answer all questions', type: 'danger' });
     // console.log('answered: ', answered);
   };
+
   useEffect(() => {
     hideAlert();
   }, [answered]);
   useEffect(() => {
     setAnswered(0);
   }, []);
+
+  const [windowWidth, setWindowWidth] = useState(1500);
+  window.addEventListener('resize', () => {
+    setWindowWidth(window.innerWidth);
+    console.log(windowWidth);
+  });
+
   return (
     <>
       {submit && <Navigate to='/results' />}
-      <div className='container-fluid col-sm-12 col-md-10 mt-5 col-lg-5'>
+      <div className='container-fluid mt-5'>
         <h2>test</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, ipsa!
         </p>
         <h4 className='text-secondary subject'>subject: Math</h4>
-        <div className='text-center my-5'>
-          {questionsJson.map((item) => {
-            return <QuestionRow key={item._id} value={item} type='test' />;
-          })}
-          <div className='px-5 container-fluid w-50'>
-            {alert.show && (
-              <div className={`mt-2 alert alert-${alert.type}`}>
-                {alert.text}
-              </div>
-            )}
-            <div className='px-5 row my-5'>
+        {windowWidth >= 700 && (
+          <div className='text-center my-5'>
+            {questionsJson.map((item) => {
+              return <QuestionRow key={item._id} value={item} type='test' />;
+            })}
+            <div className='px-5 container-fluid w-50'>
+              {alert.show && (
+                <div className={`mt-2 alert alert-${alert.type}`}>
+                  {alert.text}
+                </div>
+              )}
               <button
                 to='/results'
-                className='btn btn-lg btn-dark'
+                className='btn btn-lg btn-dark my-3'
                 type='submit'
                 onClick={handleSubmit}
               >
@@ -52,7 +60,12 @@ export default function QuestionList() {
               </button>
             </div>
           </div>
-        </div>
+        )}
+        {windowWidth < 700 && (
+          <div className='container-fluid text-center my-5'>
+            <h2>please increase the size of the window</h2>
+          </div>
+        )}
       </div>
     </>
   );
