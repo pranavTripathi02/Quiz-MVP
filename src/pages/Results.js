@@ -41,31 +41,33 @@ export default function Results() {
         </div>
         <button
           onClick={toggleaAnalytics}
-          className='btn btn-sm btn-primary d-flex'
+          className='m-2 btn btn-sm btn-primary d-flex'
         >
           view analytics
         </button>
         {showStat && (
           <div className='container text-center m-5'>
             <div className='row'>
-              <h4 className='col-md-1 col-sm-1 mx-5'>question</h4>
-              <h4 className='col-md-7 col-sm-1 mx-5'>status</h4>
-              {correctQuestions.map((item, index) => {
-                const stat = item ? 'Correct' : 'Incorrect';
-                return (
-                  <div key={index} className='row'>
-                    <h4 className='col-md-1 col-sm-1 mx-5'>{index}</h4>
-                    <h5 className='col-md-7 col-sm-2 mx-5'>
-                      <span
-                        className={`${item ? 'text-success' : 'text-danger'}`}
-                      >
-                        {stat}
-                      </span>
-                    </h5>
-                  </div>
-                );
-              })}
+              <div className='col-md-1 mx-5 float-sm-start h4'>questions</div>
+              <div className='col-md-7 mx-5 float-sm-end h4'>status</div>
             </div>
+            {correctQuestions.map((item, index) => {
+              const stat = item ? 'Correct' : 'Incorrect';
+              return (
+                <div key={index} className='row'>
+                  <div className='col-md-1 mx-5 float-sm-start h4'>
+                    {index + 1}
+                  </div>
+                  <div className='col-md-7 mx-5 float-sm-end h4'>
+                    <span
+                      className={`${item ? 'text-success' : 'text-danger'}`}
+                    >
+                      {stat}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
