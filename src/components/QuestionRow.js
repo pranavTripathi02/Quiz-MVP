@@ -30,15 +30,15 @@ export default function QuestionRow({ type, value }) {
       } else setState('Incorrect');
       // console.log('score: ', score);
       // console.log(state);
-    }
-    setAnswered(answered + 1);
+      setAnswered(answered + 1);
+    } else console.log('state exists');
   };
 
   return (
     <>
-      <div className='container-fluid text-center'>
+      <div className='container-fluid text-center question-bg'>
         {type === 'test' && (
-          <div className='d-flex p-5 question-bg'>
+          <div className='d-flex p-5'>
             <h4>{title}</h4>
             <div className='btn-group'>
               {options.map((option) => {

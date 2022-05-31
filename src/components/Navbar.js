@@ -11,7 +11,9 @@ export default function Navbar() {
           <img src='../logo.svg' alt='logo' />
         </a>
         {alert.show && (
-          <div className={`alert alert-${alert.type}`}>{alert.text}</div>
+          <div className={`text-center alert alert-${alert.type}`}>
+            {alert.text}
+          </div>
         )}
         <a href='#' className='navbar-brand'>
           <i className='fas fa-user' />
