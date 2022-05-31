@@ -25,7 +25,7 @@ export default function QuestionList() {
   return (
     <>
       {submit && <Navigate to='/results' />}
-      <div className='container-fluid col-md-10 mt-5 col-lg-5'>
+      <div className='container-fluid col-sm-12 col-md-10 mt-5 col-lg-5'>
         <h2>test</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, ipsa!

@@ -31,7 +31,8 @@ export default function QuestionRow({ type, value }) {
       // console.log('score: ', score);
       // console.log(state);
       setAnswered(answered + 1);
-    } else console.log('state exists');
+    }
+    // else console.log('state exists');
   };
 
   return (
