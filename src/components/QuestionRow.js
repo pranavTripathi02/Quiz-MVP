@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context.js';
 
 export default function QuestionRow({ type, value }) {
-  const { answered, setAnswered, setScore, score } = useGlobalContext();
+  const {
+    correctQuestions,
+    setCorrectQuestions,
+    answered,
+    setAnswered,
+    setScore,
+    score,
+  } = useGlobalContext();
   const [state, setState] = useState('');
   const { title, ans } = value;
   const options = [
@@ -27,7 +34,12 @@ export default function QuestionRow({ type, value }) {
       if (num === ans) {
         setState('Correct');
         setScore(score + 1);
-      } else setState('Incorrect');
+        setCorrectQuestions([...correctQuestions, 1]);
+        // console.log(correctQuestions;
+      } else {
+        setState('Incorrect');
+        setCorrectQuestions([...correctQuestions, 0]);
+      }
       // console.log('score: ', score);
       // console.log(state);
       setAnswered(answered + 1);
@@ -63,7 +75,7 @@ export default function QuestionRow({ type, value }) {
             </div>
           </div>
         )}
-        {type === 'result' && <div className='container'>hello</div>}
+        {/* {type === 'result' && Ques} */}
       </div>
     </>
   );

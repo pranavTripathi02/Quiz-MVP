@@ -5,8 +5,14 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../context';
 
 export default function QuestionList() {
-  const { answered, setAnswered, alert, showAlert, hideAlert } =
-    useGlobalContext();
+  const {
+    setCorrectQuestions,
+    answered,
+    setAnswered,
+    alert,
+    showAlert,
+    hideAlert,
+  } = useGlobalContext();
   const [submit, setSubmit] = useState(false);
   // console.log(questionsJson);
   const handleSubmit = (e) => {
@@ -20,11 +26,13 @@ export default function QuestionList() {
   useEffect(() => {
     hideAlert();
   }, [answered]);
+
   useEffect(() => {
     setAnswered(0);
+    setCorrectQuestions([]);
   }, []);
 
-  const [windowWidth, setWindowWidth] = useState(1500);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   window.addEventListener('resize', () => {
     setWindowWidth(window.innerWidth);
     console.log(windowWidth);

@@ -4,6 +4,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [score, setScore] = useState(0);
+  const [correctQuestions, setCorrectQuestions] = useState([]);
   const [answered, setAnswered] = useState(0);
   const [alert, setAlert] = useState({
     show: false,
@@ -26,6 +27,8 @@ const AppProvider = ({ children }) => {
         showAlert,
         hideAlert,
         alert,
+        correctQuestions,
+        setCorrectQuestions,
       }}
     >
       {children}
