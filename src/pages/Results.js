@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import QuestionRow from '../components/QuestionRow';
+// import QuestionRow from '../components/QuestionRow';
 import { useGlobalContext } from '../context';
 
 export default function Results() {
   const { correctQuestions, score } = useGlobalContext();
   const length = correctQuestions.length;
-  let i = 0;
-  const [windowWidth, setWindowWidth] = useState(1500);
   const [showStat, setShowStat] = useState(false);
   const toggleaAnalytics = () => {
     setShowStat(!showStat);

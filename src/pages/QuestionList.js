@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionRow from '../components/QuestionRow';
 import questionsJson from '../questions.json';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useGlobalContext } from '../context';
 
 export default function QuestionList() {
@@ -35,13 +35,13 @@ export default function QuestionList() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   window.addEventListener('resize', () => {
     setWindowWidth(window.innerWidth);
-    console.log(windowWidth);
+    // console.log(windowWidth);
   });
 
   return (
     <>
       {submit && <Navigate to='/results' />}
-      <div className='container-fluid mt-5'>
+      <div className='container-fluid col-md-10 col-lg-5 mt-5'>
         <h2>test</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, ipsa!
